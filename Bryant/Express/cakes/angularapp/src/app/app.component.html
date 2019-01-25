@@ -1,0 +1,36 @@
+<div id="new">
+  <h2>Rate My Cakes</h2>
+  <h4>Submit a cake to be rated.</h4>
+  <form (submit)= "onCreate()">
+      <p>{{new_cake | json}}</p>
+      <label>Baker Name:
+        <input type="text" name="new_cake.baker" [(ngModel)]="new_cake.baker" />
+      </label><br>
+      <label>Image URL:
+        <input type="text" name="new_cake.imgurl" [(ngModel)]="new_cake.imgurl" />
+      </label><br>
+      <input type='submit' value='Submit Cake'/>
+  </form>
+</div>
+
+<div>
+  <ul>
+
+  <li id='cake' *ngFor='let cake of all_cakes'>
+    <img  (click)=showCake(cake._id) [src]="cake.imgurl" style="height:200px" style="width: 200px">
+    <form (submit)="rateCake(cake._id)">
+      <select class='cmt' name='stars' value='Stars'>
+        <option value=1>1 Star</option>
+        <option value=2>2 Stars</option>
+        <option value=3>3 Stars</option>
+        <option value=4>4 Stars</option>
+        <option value=5>5 Stars</option>
+      </select>
+      <input class="cmt" type="text" name='comments' value='Type Your Comments'>
+      <input type='submit' value='Rate Cake'/>
+    </form>
+  </li>
+  </ul>
+</div>
+<app-nester if *ngIf='cake' [show_cake]="cake" [avg]='avg'> </app-nester>
+<router-outlet></router-outlet>

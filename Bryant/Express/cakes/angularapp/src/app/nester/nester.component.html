@@ -1,0 +1,15 @@
+<div>
+  <h1>Baked By {{show_cake.baker}} </h1>
+
+  <img [src]='show_cake.imgurl'>
+  <ul>
+    <h3>Average Rating: {{avg}}</h3>
+    <li *ngFor=' let cake of show_cake.reviews'>
+      <h4>{{show_cake.review}}</h4>
+      <h4>{{show_cake.rating}} Stars</h4>
+    </li>
+  </ul>
+  
+  
+  
+</div>

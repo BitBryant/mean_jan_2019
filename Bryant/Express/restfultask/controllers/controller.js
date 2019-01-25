@@ -26,7 +26,7 @@ module.exports = {
 	},
 
 	create: function(req,res){
-		var task = new Task({title: req.params.title, desc: req.params.desc});
+		var task = new Task({title: req.body.title, desc: req.body.desc});
 		task.save(function(err) {
     		if(err) {
     			console.log("Error Task");
@@ -40,7 +40,7 @@ module.exports = {
 
 	update: function(req,res){
 		var task = Task.update({_id: req.params.id}, 
-								   {title: req.params.title, desc: req.params.desc, completed: req.params.complete},
+								   {title: req.body.title, desc: req.body.desc},
 								   function(err, task){
 										if(err) {
       											res.json({message: "Error Updating Task"});

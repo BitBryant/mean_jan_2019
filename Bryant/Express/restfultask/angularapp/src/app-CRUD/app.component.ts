@@ -70,8 +70,7 @@ export class AppComponent implements OnInit {
   deleteTask(id) {
     this._httpservice.deleteTask(id).subscribe((data:any) => {
       console.log("Deleting Task", data);
-      this.delete_task = data;
-      console.log(this.delete_task);
+      this.deleteTask =data;
       this.getTasks();
     });
   }
